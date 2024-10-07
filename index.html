@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>test</title>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="popup">
+            <div class="popup-header">
+                <img src="./img/logo.svg" alt="">
+                <h1 class="popup-header__title">Outsmart the Market</h1>
+                <div class="popup-header__label">
+                    <div><span>-50% OFF</span></div>
+                    <div><span>BLACK FRIDAY</span></div>
+                </div>
+            </div>
+
+            <div class="popup-body">
+                <div class="popup-body__navigations">
+                    <button id="annualButton" class="active">Annually</button>
+                    <button id="monthButton">Monthly</button>
+                </div>
+
+                <div class="popup-price">
+                    <div class="popup-price__left">
+                        <div class="main-price__box">
+                            <span class="main-price">$XXX.XX</span>/year
+                        </div>
+                        <div class="billed-price__box">
+                            <span class="billed-price">$X.xx</span>/month. Billed Annually
+                        </div>
+                    </div>
+
+                    <div class="popup-price__right">
+                        <div class="percent-price__box">
+                            <span>-XX</span>
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="popup-body__list">
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span>100% <b>Ad-Free</b> Experience</span>
+                    </li>
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span><b>Build a winning portfolio</b> with ProPicks AI</span>
+                    </li>
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span><b>Fair Value</b> Estimates Made with Machine Learning</span>
+                    </li>
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span>Get stocks’ bottom line with <b>ProTips</b></span>
+                    </li>
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span>Investment <b>ideas</b> from billionaires’ portfolios</span>
+                    </li>
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span>Access To <b>100+ Fundamental Metrics</b></span>
+                    </li>
+                    <li>
+                        <img src="./img/check-icon.svg" alt="">
+                        <span>Interactive <b>Peer Comparison</b> Tools</span>
+                    </li>
+
+                    <a href="#">...and many more Advanced Financial Tools <span></span></a>
+                </ul>
+                
+
+                <p class="popup-body__privacy">
+                    By subscribing to InvestingPro, you agree to our Privacy Policy and
+                    <a href="#">Terms & Conditions.</a>
+                    <span>
+                        <span>
+                            <img src="./img/secure-icon.svg" alt="">
+                            <span>Secure Payment </span>
+                        </span>
+                    </span>
+                </p>
+
+                <div class="restore-button">
+                    <a href="#" >Restore Purchases</a>
+                </div>
+
+                <button class="submit-button">Subscribe Now for $XXX.XX</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const monthButton = document.getElementById('monthButton');
+        const annualButton = document.getElementById('annualButton');
+
+    
+        monthButton.addEventListener('click', function() {
+            monthButton.classList.add('active'); 
+            annualButton.classList.remove('active');
+        });
+
+        annualButton.addEventListener('click', function() {
+            annualButton.classList.add('active'); 
+            monthButton.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
