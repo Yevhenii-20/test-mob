@@ -152,14 +152,16 @@
                 document.querySelectorAll('#main-price').textContent = 'Параметр не вказано';
             }
 
-            const value1 = 155.99;
-            const value2 = 108.99;
+            const value1 = params.get('current_price_com.investing.pro.year'); 
+            const value2 = params.get('regular_price_com.investing.pro.year');
+
+
 
             // Виконуємо розрахунок
             const result = (1 - (value1 / value2)) * 100;
 
             // Виводимо результат
-            document.getElementById('percent-discount').textContent = `${result.toFixed(2)}`;
+            document.getElementById('percent-discount').textContent = `-${result.toFixed(2)}`;
 
         monthButton.addEventListener('click', function() {
             monthButton.classList.toggle('active');
@@ -198,14 +200,14 @@
                 document.getElementById('main-price').textContent = 'false';
             }
 
-            const value1 = 155.99;
-            const value2 = 108.99;
+            const value1 = params.get('current_price_com.investing.pro.year'); 
+            const value2 = params.get('regular_price_com.investing.pro.year');
 
             // Виконуємо розрахунок
             const result = (1 - (value1 / value2)) * 100;
 
             // Виводимо результат
-            document.getElementById('percent-discount').textContent = `${result.toFixed(2)}`;
+            document.getElementById('percent-discount').textContent = `-${result.toFixed(2)}`;
         });
 
 
