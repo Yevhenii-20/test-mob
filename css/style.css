@@ -14,6 +14,10 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 body {
     background: #0C1115;
     color: #fff;
@@ -45,7 +49,7 @@ body {
 .popup-header::before {
     content: ' ';
     position: absolute;
-    background: url(../img/stars-background.svg) center center no-repeat;
+    background: url(../img/stars-background-en.svg) center center no-repeat;
     background-size: cover;
     width: 238px;
     height: 82px;
@@ -120,12 +124,21 @@ body {
     border-radius: 6px;
     background: none;
     text-align: center;
-    width: 50%;
+    width: 49.5%;
     border: none;
     font-weight: 400;
     font-size: 13px;
     color: #fff;
     padding: 6px;
+}
+
+#select-period {
+    position: relative;
+    left: -4px;
+}
+
+.popup-body__navigations button:hover {
+    background: #472D0B;
 }
 
 .popup-body__navigations button.active {
@@ -156,7 +169,7 @@ body {
 }
 
 .popup-body__list > a span {
-    background: url(../img/arrow.svg) center center no-repeat;
+    background: url(../img/arrow-en.svg) center center no-repeat;
     background-size: cover;
     width: 12px;
     height: 24px;
@@ -234,7 +247,7 @@ body {
 .submit-button::before {
     content: ' ';
     position: absolute;
-    background: url(../img/privat-button.svg);
+    background: url(../img/privat-button-en.svg);
     width: 79px;
     height: 48px;
     top: 0;

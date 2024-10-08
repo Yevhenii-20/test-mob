@@ -17,7 +17,7 @@
     <div class="wrapper">
         <section class="popup">
             <div class="popup-header">
-                <img src="./img/logo.svg" alt="">
+                <img src="./img/logo-en.svg" alt="">
                 <h1 class="popup-header__title">Outsmart the Market</h1>
                 <div class="popup-header__label">
                     <div><span>-50% OFF</span></div>
@@ -34,7 +34,8 @@
                 <div class="popup-price">
                     <div class="popup-price__left">
                         <div class="main-price__box">
-                            <span class="main-price">$XXX.XX</span>/year
+                            <span class="main-price mp" id="main-price">$XXX.XX</span>
+                            <span id="select-period"></span>
                         </div>
                         <div class="billed-price__box">
                             <span class="billed-price">$X.xx</span>/month. Billed Annually
@@ -43,7 +44,7 @@
 
                     <div class="popup-price__right">
                         <div class="percent-price__box">
-                            <span>-XX</span>
+                            <span id="percent-discount">-XX</span>
                             <span>%</span>
                         </div>
                     </div>
@@ -51,44 +52,43 @@
 
                 <ul class="popup-body__list">
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span>100% <b>Ad-Free</b> Experience</span>
                     </li>
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span><b>Build a winning portfolio</b> with ProPicks AI</span>
                     </li>
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span><b>Fair Value</b> Estimates Made with Machine Learning</span>
                     </li>
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span>Get stocks’ bottom line with <b>ProTips</b></span>
                     </li>
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span>Investment <b>ideas</b> from billionaires’ portfolios</span>
                     </li>
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span>Access To <b>100+ Fundamental Metrics</b></span>
                     </li>
                     <li>
-                        <img src="./img/check-icon.svg" alt="">
+                        <img src="./img/check-icon-en.svg" alt="">
                         <span>Interactive <b>Peer Comparison</b> Tools</span>
                     </li>
 
                     <a href="#">...and many more Advanced Financial Tools <span></span></a>
                 </ul>
-                
 
                 <p class="popup-body__privacy">
                     By subscribing to InvestingPro, you agree to our Privacy Policy and
                     <a href="#">Terms & Conditions.</a>
                     <span>
                         <span>
-                            <img src="./img/secure-icon.svg" alt="">
+                            <img src="./img/secure-icon-en.svg" alt="">
                             <span>Secure Payment </span>
                         </span>
                     </span>
@@ -98,17 +98,15 @@
                     <a href="#" >Restore Purchases</a>
                 </div>
 
-                <button class="submit-button">Subscribe Now for $XXX.XX</button>
+                <button class="submit-button">Subscribe Now for <span id="mp"></span></button>
             </div>
         </section>
     </div>
 
     <script>
-        const monthButton = document.getElementById('monthButton');
-        const annualButton = document.getElementById('annualButton');
 
     
-        monthButton.addEventListener('click', function() {
+        /*monthButton.addEventListener('click', function() {
             monthButton.classList.add('active'); 
             annualButton.classList.remove('active');
         });
@@ -117,6 +115,100 @@
             annualButton.classList.add('active'); 
             monthButton.classList.remove('active');
         });
+
+         const params = new URLSearchParams(window.location.search);
+
+        const monthParam = params.get('regular_price_com.investing.pro.monthly');
+        const yearParam = params.get('regular_price_com.investing.pro.year');
+
+        const element = document.getElementById('annualButton');
+        const element2 = document.getElementById('monthButton');
+        const hasClass = element.classList.contains('active');
+        const hasClasss = element2.classList.contains('active');
+
+
+        if (hasClasss) {
+            document.getElementById('main-price').textContent = yearParam
+        } else if (hasClasss) {
+            document.getElementById('main-price').textContent = yearParam
+        }*/
+
+        const currency = '$';
+
+        const monthButton = document.getElementById('monthButton');
+        const annualButton = document.getElementById('annualButton');
+
+        const params = new URLSearchParams(window.location.search);
+            const paramValue = params.get('current_price_com.investing.pro.year'); 
+            const outputDiv = document.getElementById('main-price');
+
+            if (paramValue) {
+                const numericValue = parseFloat(paramValue);
+                const formattedValue = numericValue.toFixed(2);
+                document.getElementById('main-price').textContent = currency + formattedValue;
+                document.getElementById('mp').textContent = currency + formattedValue;
+                document.getElementById('select-period').textContent = '/year'
+            } else {
+                document.querySelectorAll('#main-price').textContent = 'Параметр не вказано';
+            }
+
+            const value1 = 155.99;
+            const value2 = 108.99;
+
+            // Виконуємо розрахунок
+            const result = (1 - (value1 / value2)) * 100;
+
+            // Виводимо результат
+            document.getElementById('percent-discount').textContent = `${result.toFixed(2)}`;
+
+        monthButton.addEventListener('click', function() {
+            monthButton.classList.toggle('active');
+            annualButton.classList.remove('active');
+            const params = new URLSearchParams(window.location.search);
+            const paramValue = params.get('regular_price_com.investing.pro.monthly'); 
+            const outputDiv = document.getElementById('main-price');
+
+            if (paramValue) {
+                const numericValue = parseFloat(paramValue);
+                const formattedValue = numericValue.toFixed(2);
+                document.getElementById('main-price').textContent = currency + formattedValue;
+                document.getElementById('select-period').textContent = '/month'
+                document.getElementById('mp').textContent = currency + formattedValue;
+            } else {
+                document.getElementById('main-price').textContent = 'false';
+            }
+
+            document.getElementById('percent-discount').textContent = `0`;
+        });
+
+        annualButton.addEventListener('click', function() {
+            monthButton.classList.remove('active');
+            annualButton.classList.toggle('active');
+            const params = new URLSearchParams(window.location.search);
+            const paramValue = params.get('current_price_com.investing.pro.year'); 
+            const outputDiv = document.getElementById('main-price');
+
+            if (paramValue) {
+                const numericValue = parseFloat(paramValue);
+                const formattedValue = numericValue.toFixed(2);
+                document.getElementById('main-price').textContent = currency + formattedValue;
+                document.getElementById('select-period').textContent = '/year'
+                document.getElementById('mp').textContent = currency + formattedValue;
+            } else {
+                document.getElementById('main-price').textContent = 'false';
+            }
+
+            const value1 = 155.99;
+            const value2 = 108.99;
+
+            // Виконуємо розрахунок
+            const result = (1 - (value1 / value2)) * 100;
+
+            // Виводимо результат
+            document.getElementById('percent-discount').textContent = `${result.toFixed(2)}`;
+        });
+
+
     </script>
 </body>
 </html>
